@@ -30,3 +30,9 @@ axios.get('http://www.omdbapi.com?s='+searchText)
   console.log(err);
 });
 }
+
+function movieSelected(id){
+    sessionStorage.setItem('movieId', id);
+    window.location = 'movie.html';
+    return false;
+  }
