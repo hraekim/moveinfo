@@ -7,7 +7,7 @@ $(document).ready(() => {
   });
 
 function getMovies(searchText){
-axios.get('http://www.omdbapi.com?s='+searchText)
+    axios.get('http://www.omdbapi.com?s='+ searchText+'&apikey=thewdb')
     .then((response) => {
     console.log(response);
     let movies = response.data.Search;
@@ -16,19 +16,19 @@ axios.get('http://www.omdbapi.com?s='+searchText)
         output += `
         <div class="col-md-3">
             <div class="well text-center">
-            <img src="${movie.Poster}">
-            <h5>${movie.Title}</h5>
-            <a onclick="movieSelected('${movie.imdbID}')" class="btn btn-primary" href="#">Movie Details</a>
+              <img src="${movie.Poster}">
+              <h5>${movie.Title}</h5>
+              <a onclick="movieSelected('${movie.imdbID}')" class="btn btn-primary" href="#">Movie Details</a>
             </div>
         </div>
         `;
     });
 
     $('#movies').html(output);
-})
-.catch((err) => {
-  console.log(err);
-});
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 }
 
 function movieSelected(id){
@@ -40,7 +40,7 @@ function movieSelected(id){
 function getMovie(){
     let movieId = sessionStorage.getItem('movieId');
   
-    axios.get('http://www.omdbapi.com?i='+movieId)
+    axios.get('http://www.omdbapi.com?i='+ movieId)
       .then((response) => {
         console.log(response);
         let movie = response.data;
