@@ -23,3 +23,10 @@ axios.get('http://www.omdbapi.com?s='+searchText)
         </div>
         `;
     });
+
+    $('#movies').html(output);
+})
+.catch((err) => {
+  console.log(err);
+});
+}
