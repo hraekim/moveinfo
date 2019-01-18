@@ -35,4 +35,12 @@ function movieSelected(id){
     sessionStorage.setItem('movieId', id);
     window.location = 'movie.html';
     return false;
-  }
+}
+
+function getMovie(){
+    let movieId = sessionStorage.getItem('movieId');
+  
+    axios.get('http://www.omdbapi.com?i='+movieId)
+      .then((response) => {
+        console.log(response);
+        let movie = response.data;
